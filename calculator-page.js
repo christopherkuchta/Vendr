@@ -172,3 +172,40 @@ function calculateThreeYearDiscount() {
     totalCost.value = toUSD(prevCostTotal + prevDiscount);
   }
 }
+
+
+$(document).ready(function () {
+  var $checkboxWrapper = $('div.available-discounts');
+
+  $checkboxWrapper.find('input[type=checkbox]').on('change', function () {
+    if ($checkboxWrapper.find('input[type=checkbox]:checked').length > 1) {
+      $(this).prop('checked', false).change();
+    }
+
+    if ($checkboxWrapper.find('input[type=checkbox]:checked').length === 1) {
+      $checkboxWrapper
+        .find('input[type=checkbox]:not(:checked)')
+        .closest('label')
+        .css({ opacity: '0.5', 'pointer-events': 'none' });
+    } else {
+      $checkboxWrapper.find('label').css({ opacity: '', 'pointer-events': '' });
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.pricing-base-col-cart').forEach((trigger) => {
+    trigger.addEventListener('click', function () {
+      this.x = ((this.x || 0) + 1) % 2;
+      if (this.x) {
+        document
+          .querySelectorAll('.pricing-base-col-cart')
+          .forEach((target) => target.classList.add('overflow-auto'));
+      } else {
+        document
+          .querySelectorAll('.pricing-base-col-cart')
+          .forEach((target) => target.classList.remove('overflow-auto'));
+      }
+    });
+  });
+});
