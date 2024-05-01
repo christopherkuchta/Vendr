@@ -209,3 +209,169 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// Mobile dropdown click trigger for tabs
+
+  $('.intelligence-link-1').on('click', function (evt) {
+    $('.intelligence-select-1').triggerHandler('click');
+    evt.preventDefault();
+  });
+  
+    $('.intelligence-link-2').on('click', function (evt) {
+    $('.intelligence-select-2').triggerHandler('click');
+    evt.preventDefault();
+  });
+  
+      $('.intelligence-link-3').on('click', function (evt) {
+    $('.intelligence-select-3').triggerHandler('click');
+    evt.preventDefault();
+  });
+  
+      $('.intelligence-link-4').on('click', function (evt) {
+    $('.intelligence-select-4').triggerHandler('click');
+    evt.preventDefault();
+  });
+
+
+
+  $('.negotiations-link-1').on('click', function (evt) {
+    $('.negotiations-select-1').triggerHandler('click');
+    evt.preventDefault();
+  });
+  
+    $('.negotiations-link-2').on('click', function (evt) {
+    $('.negotiations-select-2').triggerHandler('click');
+    evt.preventDefault();
+  });
+  
+      $('.negotiations-link-3').on('click', function (evt) {
+    $('.negotiations-select-3').triggerHandler('click');
+    evt.preventDefault();
+  });
+  
+      $('.negotiations-link-4').on('click', function (evt) {
+    $('.negotiations-select-4').triggerHandler('click');
+    evt.preventDefault();
+  });
+  
+      $('.negotiations-link-5').on('click', function (evt) {
+    $('.negotiations-select-5').triggerHandler('click');
+    evt.preventDefault();
+  });
+  
+    
+      $('.negotiations-link-6').on('click', function (evt) {
+    $('.negotiations-select-6').triggerHandler('click');
+    evt.preventDefault();
+  });
+  
+
+
+// Mobile dropdown custom dropdown - active selection
+
+document.addEventListener('DOMContentLoaded', () => {
+ document.querySelectorAll('.intelligence-link-1').forEach(trigger => {
+  trigger.addEventListener('click', function(){ 
+    document.querySelectorAll('.intelligence-link-1').forEach(target => target.classList.add('is-first'));
+    document.querySelectorAll('.intelligence-link-2').forEach(target => target.classList.remove('is-first'));
+    document.querySelectorAll('.intelligence-link-3').forEach(target => target.classList.remove('is-first'));
+    document.querySelectorAll('.intelligence-link-4').forEach(target => target.classList.remove('is-first')); 
+    });
+ });
+
+ document.querySelectorAll('.intelligence-link-2').forEach(trigger => {
+  trigger.addEventListener('click', function(){ 
+    document.querySelectorAll('.intelligence-link-2').forEach(target => target.classList.add('is-first'));
+    document.querySelectorAll('.intelligence-link-1').forEach(target => target.classList.remove('is-first'));
+    document.querySelectorAll('.intelligence-link-3').forEach(target => target.classList.remove('is-first'));
+    document.querySelectorAll('.intelligence-link-4').forEach(target => target.classList.remove('is-first')); 
+    });
+ });
+
+ document.querySelectorAll('.intelligence-link-3').forEach(trigger => {
+  trigger.addEventListener('click', function(){ 
+    document.querySelectorAll('.intelligence-link-3').forEach(target => target.classList.add('is-first'));
+    document.querySelectorAll('.intelligence-link-1').forEach(target => target.classList.remove('is-first'));
+    document.querySelectorAll('.intelligence-link-2').forEach(target => target.classList.remove('is-first'));
+    document.querySelectorAll('.intelligence-link-4').forEach(target => target.classList.remove('is-first')); 
+    });
+ });
+
+ document.querySelectorAll('.intelligence-link-4').forEach(trigger => {
+  trigger.addEventListener('click', function(){ 
+    document.querySelectorAll('.intelligence-link-4').forEach(target => target.classList.add('is-first'));
+    document.querySelectorAll('.intelligence-link-1').forEach(target => target.classList.remove('is-first'));
+    document.querySelectorAll('.intelligence-link-2').forEach(target => target.classList.remove('is-first'));
+    document.querySelectorAll('.intelligence-link-3').forEach(target => target.classList.remove('is-first')); 
+    });
+ });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+ document.querySelectorAll('.negotiations-link-1').forEach(trigger => {
+  trigger.addEventListener('click', function(){ 
+    document.querySelectorAll('.negotiations-link-1').forEach(target => target.classList.add('is-active'));
+    document.querySelectorAll('.negotiations-link-2').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-3').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-4').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-5').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-6').forEach(target => target.classList.remove('is-active')); 
+    });
+ });
+
+ document.querySelectorAll('.negotiations-link-2').forEach(trigger => {
+  trigger.addEventListener('click', function(){ 
+    document.querySelectorAll('.negotiations-link-2').forEach(target => target.classList.add('is-active'));
+    document.querySelectorAll('.negotiations-link-1').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-3').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-4').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-5').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-6').forEach(target => target.classList.remove('is-active')); 
+    });
+ });
+
+ document.querySelectorAll('.negotiations-link-3').forEach(trigger => {
+  trigger.addEventListener('click', function(){ 
+    document.querySelectorAll('.negotiations-link-3').forEach(target => target.classList.add('is-active'));
+    document.querySelectorAll('.negotiations-link-1').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-2').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-4').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-5').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-6').forEach(target => target.classList.remove('is-active')); 
+    });
+ });
+
+ document.querySelectorAll('.negotiations-link-4').forEach(trigger => {
+  trigger.addEventListener('click', function(){ 
+    document.querySelectorAll('.negotiations-link-3').forEach(target => target.classList.add('is-active'));
+    document.querySelectorAll('.negotiations-link-1').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-2').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-3').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-5').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-6').forEach(target => target.classList.remove('is-active')); 
+    });
+ });
+
+ document.querySelectorAll('.negotiations-link-5').forEach(trigger => {
+  trigger.addEventListener('click', function(){ 
+    document.querySelectorAll('.negotiations-link-5').forEach(target => target.classList.add('is-active'));
+    document.querySelectorAll('.negotiations-link-1').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-2').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-3').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-4').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-6').forEach(target => target.classList.remove('is-active')); 
+    });
+ });
+
+ document.querySelectorAll('.negotiations-link-6').forEach(trigger => {
+  trigger.addEventListener('click', function(){ 
+    document.querySelectorAll('.negotiations-link-6').forEach(target => target.classList.add('is-active'));
+    document.querySelectorAll('.negotiations-link-1').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-2').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-3').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-4').forEach(target => target.classList.remove('is-active'));
+    document.querySelectorAll('.negotiations-link-5').forEach(target => target.classList.remove('is-active')); 
+    });
+ });
+});
