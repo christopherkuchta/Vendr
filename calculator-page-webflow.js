@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
  document.querySelectorAll('.negotiations-link-4').forEach(trigger => {
   trigger.addEventListener('click', function(){ 
-    document.querySelectorAll('.negotiations-link-3').forEach(target => target.classList.add('is-active'));
+    document.querySelectorAll('.negotiations-link-4').forEach(target => target.classList.add('is-active'));
     document.querySelectorAll('.negotiations-link-1').forEach(target => target.classList.remove('is-active'));
     document.querySelectorAll('.negotiations-link-2').forEach(target => target.classList.remove('is-active'));
     document.querySelectorAll('.negotiations-link-3').forEach(target => target.classList.remove('is-active'));
