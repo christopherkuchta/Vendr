@@ -195,7 +195,7 @@ $(document).ready(function () {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.pricing-base-col-cart').forEach((trigger) => {
+  document.querySelectorAll('.cart-toggle-icon').forEach((trigger) => {
     trigger.addEventListener('click', function () {
       this.x = ((this.x || 0) + 1) % 2;
       if (this.x) {
