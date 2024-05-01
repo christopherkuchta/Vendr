@@ -1,58 +1,174 @@
-  $('intelligence-link-1').on('click', function (evt) {
-    $('.pricing-select-1').triggerHandler('click');
-    evt.preventDefault();
-  });
-  
-    $('intelligence-link-2').on('click', function (evt) {
-    $('.pricing-select-2').triggerHandler('click');
-    evt.preventDefault();
-  });
-  
-      $('intelligence-link-3').on('click', function (evt) {
-    $('.pricing-select-3').triggerHandler('click');
-    evt.preventDefault();
-  });
-  
-      $('intelligence-link-4').on('click', function (evt) {
-    $('.pricing-select-4').triggerHandler('click');
-    evt.preventDefault();
-  });
-  
+// input
+var totalCost = document.getElementById('totalCost');
+var totalDiscount = document.getElementById('totalDiscount');
+var noDiscount = document.getElementById('noDiscount');
 
-document.addEventListener("click", function (event) {
-  // Check if clicked element or its parent has the data-dropdown attribute
-  let dropdownElement = event.target.hasAttribute("data-dropdown")
-    ? event.target
-    : event.target.closest("[data-dropdown]");
+// radio buttons
+var procurement = document.getElementById('procurement');
+var intelligence1 = document.getElementById('intelligence1');
+var intelligence2 = document.getElementById('intelligence2');
+var intelligence3 = document.getElementById('intelligence3');
+var intelligence4 = document.getElementById('intelligence4');
+var advocacyProgram = document.getElementById('advocacyProgram');
+var fastSigning = document.getElementById('fastSigning');
+var redLines = document.getElementById('redLines');
+var twoYear = document.getElementById('twoYear');
+var threeYear = document.getElementById('threeYear');
+var negotiations1 = document.getElementById('negotiations1');
+var negotiations2 = document.getElementById('negotiations2');
+var negotiations3 = document.getElementById('negotiations3');
+var negotiations4 = document.getElementById('negotiations4');
+var negotiations5 = document.getElementById('negotiations5');
+var negotiations6 = document.getElementById('negotiations6');
 
-  if (dropdownElement) {
-    // Get the value of the data-dropdown attribute
-    const dropdownValue = dropdownElement.getAttribute("data-dropdown");
+var procurementRemove = document.getElementById('procurementRemove');
+var intelligenceRemove = document.getElementById('intelligenceRemove');
+var negotiationsRemove = document.getElementById('negotiationsRemove');
 
-    // Find the matching tab element using the data-w-tab attribute
-    const tabElement = document.querySelector(
-      `[data-w-tab="${dropdownValue}"]`
-    );
+// format number to USD
+function toUSD(number) {
+  const usd = new Intl.NumberFormat('en-us', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+  }).format(number);
+  return `${usd}/year`;
+}
 
-    // If a matching tab is found, trigger a click on it
-    if (tabElement) {
-      tabElement.click();
-    }
+// format usd to number
+const toNumber = (usd) => +usd.replace('/year', '').replace(/\$|,/g, '');
 
-    // Extract text directly from the dropdown element
-    const dropdownText = dropdownElement.textContent.trim();
+// set defaults
+totalCost.value = toUSD(0);
 
-    // Find the element with .replace-text class
-    const replaceTextElement = document.querySelector(".replace-text");
+// calculation
+function calculateChange() {
+  totalCost.value = 0;
+  noDiscount.value = toUSD(0);
 
-    // If found, replace its text content with the text extracted from data-dropdown element
-    if (replaceTextElement) {
-      replaceTextElement.textContent = dropdownText;
-    }
+  if (procurement.checked)
+    totalCost.value = toUSD(toNumber(totalCost.value) + 3000);
+  if (intelligence1.checked)
+    totalCost.value = toUSD(toNumber(totalCost.value) + 35000);
+  if (intelligence2.checked)
+    totalCost.value = toUSD(toNumber(totalCost.value) + 55000);
+  if (intelligence3.checked)
+    totalCost.value = toUSD(toNumber(totalCost.value) + 75000);
+  if (intelligence4.checked)
+    totalCost.value = toUSD(toNumber(totalCost.value) + 95000);
+  if (negotiations1.checked)
+    totalCost.value = toUSD(toNumber(totalCost.value) + 10000);
+  if (negotiations2.checked)
+    totalCost.value = toUSD(toNumber(totalCost.value) + 20000);
+  if (negotiations3.checked)
+    totalCost.value = toUSD(toNumber(totalCost.value) + 30000);
+  if (negotiations4.checked)
+    totalCost.value = toUSD(toNumber(totalCost.value) + 40000);
+  if (negotiations5.checked)
+    totalCost.value = toUSD(toNumber(totalCost.value) + 50000);
+  if (negotiations6.checked)
+    totalCost.value = toUSD(toNumber(totalCost.value) + 60000);
+  if (negotiationsRemove.checked)
+    totalCost.value = toUSD(toNumber(totalCost.value) - 0);
+  if (intelligenceRemove.checked)
+    totalCost.value = toUSD(toNumber(totalCost.value) - 0);
+    
+  if (fastSigning.checked) calculateFastSigning();
+  if (advocacyProgram.checked) calculateAdvocacyProgram();
+  if (redLines.checked) calculateRedLines();
+  if (twoYear.checked) calculateTwoYearDiscount();
+  if (threeYear.checked) calculateThreeYearDiscount();
+}
+
+// call functions
+procurement.onclick = () => calculateChange();
+procurementRemove.onclick = () => calculateChange();
+intelligence1.onclick = () => calculateChange();
+intelligence2.onclick = () => calculateChange();
+intelligence3.onclick = () => calculateChange();
+intelligence4.onclick = () => calculateChange();
+intelligenceRemove.onclick = () => calculateChange();
+advocacyProgram.onchange = () => calculateChange();
+negotiations1.onclick = () => calculateChange();
+negotiations2.onclick = () => calculateChange();
+negotiations3.onclick = () => calculateChange();
+negotiations4.onclick = () => calculateChange();
+negotiations5.onclick = () => calculateChange();
+negotiations6.onclick = () => calculateChange();
+negotiationsRemove.onclick = () => calculateChange();
+fastSigning.onchange = () => calculateFastSigning();
+advocacyProgram.onclick = () => calculateAdvocacyProgram();
+redLines.onclick = () => calculateRedLines();
+twoYear.onclick = () => calculateTwoYearDiscount();
+threeYear.onclick = () => calculateThreeYearDiscount();
+
+// discount calculations
+function calculateFastSigning() {
+  const prevCostTotal = toNumber(totalCost.value);
+  const discount = prevCostTotal / 20;
+  const prevDiscount = toNumber(totalDiscount.value);
+
+  if (fastSigning.checked) {
+    totalDiscount.value = discount;
+    noDiscount.value = toUSD(prevCostTotal);
+    totalCost.value = toUSD(prevCostTotal - discount);
+  } else {
+    totalCost.value = toUSD(prevCostTotal + prevDiscount);
   }
-});
+}
 
-$("[data-dropdown]").click(function () {
-  //$(“.pricing-mobile-dropdown").css("z-index", "");
-  $(".pricing-mobile-dropdown").triggerHandler("w-close.w-dropdown");
-});
+function calculateAdvocacyProgram() {
+  const prevCostTotal = toNumber(totalCost.value);
+  const discount = prevCostTotal / 20;
+  const prevDiscount = toNumber(totalDiscount.value);
+
+  if (advocacyProgram.checked) {
+    totalDiscount.value = discount;
+    noDiscount.value = toUSD(prevCostTotal);
+    totalCost.value = toUSD(prevCostTotal - discount);
+  } else {
+    totalCost.value = toUSD(prevCostTotal + prevDiscount);
+  }
+}
+
+function calculateRedLines() {
+  const prevCostTotal = toNumber(totalCost.value);
+  const discount = prevCostTotal / 20;
+  const prevDiscount = toNumber(totalDiscount.value);
+
+  if (redLines.checked) {
+    totalDiscount.value = discount;
+    noDiscount.value = toUSD(prevCostTotal);
+    totalCost.value = toUSD(prevCostTotal - discount);
+  } else {
+    totalCost.value = toUSD(prevCostTotal + prevDiscount);
+  }
+}
+
+function calculateTwoYearDiscount() {
+  const prevCostTotal = toNumber(totalCost.value);
+  const discount = prevCostTotal * 0.15;
+  const prevDiscount = toNumber(totalDiscount.value);
+
+  if (twoYear.checked) {
+    totalDiscount.value = discount;
+    noDiscount.value = toUSD(prevCostTotal);
+    totalCost.value = toUSD(prevCostTotal - discount);
+  } else {
+    totalCost.value = toUSD(prevCostTotal + prevDiscount);
+  }
+}
+
+function calculateThreeYearDiscount() {
+  const prevCostTotal = toNumber(totalCost.value);
+  const discount = prevCostTotal * 0.2;
+  const prevDiscount = toNumber(totalDiscount.value);
+
+  if (threeYear.checked) {
+    totalDiscount.value = discount;
+    noDiscount.value = toUSD(prevCostTotal);
+    totalCost.value = toUSD(prevCostTotal - discount);
+  } else {
+    totalCost.value = toUSD(prevCostTotal + prevDiscount);
+  }
+}
