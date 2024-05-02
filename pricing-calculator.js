@@ -1,5 +1,6 @@
 
 // input
+/*
 var totalCost = document.getElementById('totalCost');
 var totalDiscount = document.getElementById('totalDiscount');
 var noDiscount = document.getElementById('noDiscount');
@@ -193,7 +194,6 @@ function calculateThreeYearDiscount() {
     }
   });
 });*/
-
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.cart-toggle-icon').forEach((trigger) => {
