@@ -174,9 +174,9 @@ function calculateThreeYearDiscount() {
   }
 }
 
-
+//allow only one multi year discount
 $(document).ready(function () {
-  var $checkboxWrapper = $('div.available-discounts');
+  var $checkboxWrapper = $('div.w-multiyear-items');
 
   $checkboxWrapper.find('input[type=checkbox]').on('change', function () {
     if ($checkboxWrapper.find('input[type=checkbox]:checked').length > 1) {
