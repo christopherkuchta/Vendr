@@ -3,6 +3,7 @@
 var totalCost = document.getElementById('totalCost');
 var totalDiscount = document.getElementById('totalDiscount');
 var noDiscount = document.getElementById('noDiscount');
+var oneTime = document.getElementById('oneTime');
 
 // radio buttons
 var procurement = document.getElementById('procurement');
@@ -73,6 +74,23 @@ function calculateChange() {
     totalCost.value = toUSD(toNumber(totalCost.value) - 0);
   if (intelligenceRemove.checked)
     totalCost.value = toUSD(toNumber(totalCost.value) - 0);
+
+    if (negotiations1.checked)
+    totalCost.value = toUSD(toNumber(oneTime.value) + 10000);
+  if (negotiations2.checked)
+    totalCost.value = toUSD(toNumber(oneTime.value) + 20000);
+  if (negotiations3.checked)
+    totalCost.value = toUSD(toNumber(oneTime.value) + 30000);
+  if (negotiations4.checked)
+    totalCost.value = toUSD(toNumber(oneTime.value) + 40000);
+  if (negotiations5.checked)
+    totalCost.value = toUSD(toNumber(oneTime.value) + 50000);
+  if (negotiations6.checked)
+    totalCost.value = toUSD(toNumber(oneTime.value) + 60000);
+  if (negotiationsRemove.checked)
+    totalCost.value = toUSD(toNumber(oneTime.value) - 0);
+
+
     
   if (fastSigning.checked) calculateFastSigning();
   if (advocacyProgram.checked) calculateAdvocacyProgram();
