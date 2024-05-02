@@ -175,7 +175,7 @@ function calculateThreeYearDiscount() {
 }
 
 //allow only one multi year discount
-$(document).ready(function () {
+/*$(document).ready(function () {
   var $checkboxWrapper = $('div.w-multiyear-items');
 
   $checkboxWrapper.find('input[type=checkbox]').on('change', function () {
@@ -192,7 +192,8 @@ $(document).ready(function () {
       $checkboxWrapper.find('label').css({ opacity: '', 'pointer-events': '' });
     }
   });
-});
+});*/
+
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.cart-toggle-icon').forEach((trigger) => {
